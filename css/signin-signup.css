@@ -1,0 +1,11 @@
+/* Signin/Signup form */
+
+#header-signout-link {
+    /* Default to hiding the signout link until a user has logged in */
+    display: none;
+}
+
+#signup-form {
+    /* Default to hiding the signup form */
+    display: none;
+}

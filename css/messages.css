@@ -1,0 +1,39 @@
+/* Send message form */
+
+#recipient-group {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+#recipient {
+    /* Set to inline-block so Safari's select 'fallback' hack will work */
+    display: inline-block;
+    width: 12em;
+}
+
+#recipient-select {
+    /* Hack 'fallback' to select elem since Safari doesn't support datalist */
+    /* Move the select element over #recipient input to hide it from view */
+    margin-left: -13em;
+    width: 12.5em;
+}
+
+
+/* View messages div */
+
+#msg-container details {
+    cursor: pointer;
+    display: block;
+    /* Deter selection of messages even though it doesn't actually prevent it */
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+#msg-container .prefix {
+    font-weight: bold;
+}
+
+#msg-container .message {
+    margin: 1em;
+}

@@ -1,0 +1,28 @@
+/* Header */
+
+header {
+    margin-bottom: 1em;
+}
+
+
+/* Footer */
+
+footer {
+    margin-top: 1em;
+}
+
+
+/* Forms */
+
+form,
+form input,
+form textarea,
+form label {
+    display: block;
+    margin-bottom: .5em;
+}
+
+.error {
+    color: #f00;
+    font-weight: bold;
+}

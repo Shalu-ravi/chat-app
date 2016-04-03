@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- This page uses jQuery.ajax to send POST requests instead of the default -->
+<!-- form submission by the browser. See chat-app.form-handler.js for details. -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ChatApp - Messages</title>
+        <!-- Icons for the browser window/tab. -->
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <!-- CSS style sheets. -->
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <link rel="stylesheet" type="text/css" href="css/messages.css">
+    </head>
+    <body>
+        <header>
+            <!-- CSS controls hiding/showing Sign-in or Sign-out as needed -->
+            <a id="header-home-link" href="#">Messages</a> |
+            <a id="header-signin-link" href="signin.html">Sign-in</a>
+            <a id="header-signout-link" href="#">Sign-out
+            <span id="header-username">(Username)</span></a>
+        </header>
+        <!-- send-form-messages div is used to show error/success messages. -->
+        <div id="send-form-messages"></div>
+        <div>
+            <h2>Send Message</h2>
+            <form id="send-msg-form" method="post" action="lib/send_message.php" autocomplete="off">
+                <label>Recipient
+                    <!-- Group input/datalist together in a block span to ensure proper display -->
+                    <!-- on Safari, since datalist is not supported. Will display select instead. -->
+                    <span id="recipient-group">
+                        <input id="recipient"
+                               name="recipient"
+                               type="text"
+                               list="userlist"
+                               required>
+                        <datalist id="userlist">
+                            <!-- Place a select tag within datalist for Safari/iOS browsers, which do not understand datalist. -->
+                            <select id="recipient-select" name="recipient-select">
+                                <!-- Disable the 'Select a user' option to force the user to select another option. -->
+                                <option value="Select a user" selected disabled>Select a user</option>
+                                <!-- These are placeholder options and will be replaced with the actual list of -->
+                                <!-- registered recipients when the page loads. -->
+                                <option value="TestUser1">TestUser1</option>
+                                <option value="TestUser2">TestUser2</option>
+                                <option value="TestUser3">TestUser3</option>
+                            </select>
+                        </datalist>
+                    </span>
+                </label>
+                <label>Message
+                    <textarea name="message"
+                              rows="3"
+                              cols="50"
+                              maxlength="140"
+                              placeholder="Write your message here (140 characters max)."
+                              autocomplete="off"
+                              required></textarea>
+                </label>
+                <input type="submit" value="Send Message">
+            </form>
+        </div>
+        <div id="msg-container">
+            <h2>Unread Messages</h2>
+            <p>
+                This area is where your messages will appear when you receive them.
+                Note: once you open a message, you'll have <strong>10 seconds</strong> to read it before it disappears!
+            </p>
+            <form id="check-messages-form" method="post" action="lib/get_messages.php">
+                <input id="check-messages-btn" type="submit" value="Check Messages">
+            </form>
+            <!-- check-form-messages div is used to display any error or success messages. -->
+            <div id="check-form-messages"></div>
+        </div>
+        <footer>
+            Copyright © 2016. For technical support, email:
+            <a href="mailto:masukawa_jonathan@smc.edu?subject=CS 80 : 1705 lastName, firstName - help with chat app">masukawa_jonathan@smc.edu</a>
+        </footer>
+        <!-- Load JS libraries once the body has been loaded, otherwise some scripts may not work -->
+        <!-- properly if they depend on elements in the document that have not loaded yet. -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <!-- html-css-sanitizer is a library that escapes potentially malicious HTML/CSS code with -->
+        <!-- a JS function, html_sanitize. Use this on user input and potentially unsafe attributes -->
+        <script src="https://caja.appspot.com/html-css-sanitizer-minified.js"></script>
+        <script src="app/chat-app.form-handler.js"></script>
+        <script src="app/chat-app.account.js"></script>
+        <script src="app/chat-app.main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- This page uses jQuery.ajax to send POST requests instead of the default -->
+<!-- form submission by the browser. See chat-app.form-handler.js for details. -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ChatApp - Sign in/up</title>
+        <!-- Icons for the browser window/tab. -->
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <!-- CSS style sheets. -->
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <link rel="stylesheet" type="text/css" href="css/signin-signup.css">
+    </head>
+    <body>
+        <header>
+            <!-- CSS controls hiding/showing Sign-in or Sign-out as needed -->
+            <a id="header-home-link" href="index.html">Messages</a> |
+            <a id="header-signin-link" href="#">Sign-in</a>
+            <a id="header-signout-link" href="#">Sign-out
+            <span id="header-username">(Username)</span></a>
+        </header>
+        <!-- form-messages div is used to show error/success messages -->
+        <div id="form-messages"></div>
+        <form id="signin-form" method="post" action="lib/signin.php">
+            <h2>Sign in</h2>
+            <label>Username
+                <input id="signin-user"
+                       name="username"
+                       type="text"
+                       maxlength="40"
+                       placeholder="username"
+                       pattern="[a-zA-Z0-9]*"
+                       title="Usernames must not have spaces and can only contain uppercase/lowercase letters and numbers."
+                       required>
+            </label>
+            <label>Password
+                <input id="signin-pass"
+                       name="password"
+                       minlength="6"
+                       maxlength="40"
+                       type="password"
+                       required>
+            </label>
+            <input type="submit" value="Sign in">
+            <div id="signup-div">
+                Don't have an account?
+                <a id="signup-link" href="#">Sign up</a> for one.
+            </div>
+        </form>
+        <!-- signup-form is hidden by default via CSS, and appears when the signup-link anchor is clicked. -->
+        <form id="signup-form" method="post" action="lib/register.php">
+            <h2>Sign up</h2>
+            <label for="signup-user">
+                Username
+                <input id="signup-user"
+                       name="username"
+                       type="text"
+                       maxlength="40"
+                       placeholder="username"
+                       pattern="[a-zA-Z0-9]*"
+                       title="Usernames must not have spaces and can only contain uppercase/lowercase letters and numbers."
+                       required>
+            </label>
+            <label for="email">
+                E-mail
+                <input id="email"
+                       name="email"
+                       type="email"
+                       maxlength="40"
+                       placeholder="me@example.com"
+                       required>
+            </label>
+            <label for="signup-pass">
+                Password
+                <input id="signup-pass"
+                       name="password"
+                       type="password"
+                       minlength="6"
+                       maxlength="40"
+                       title="Passwords must be between 6 and 40 characters."
+                       required>
+            </label>
+            <label for="signup-confirm-pass">
+                Confirm Password
+                <input id="signup-confirm-pass"
+                       name="confirm-password"
+                       type="password"
+                       minlength="6"
+                       maxlength="40"
+                       required>
+            </label>
+            <input type="submit" value="Sign up">
+            <div id="signup-div">
+                Have an account already?
+                <a id="signin-link" href="#">Sign in</a>.
+            </div>
+        </form>
+        <footer>
+            Copyright © 2016. For technical support, email:
+            <a href="mailto:masukawa_jonathan@smc.edu?subject=CS 80 : 1705 lastName, firstName - help with chat app">masukawa_jonathan@smc.edu</a>
+        </footer>
+        <!-- Load JS libraries once the body has been loaded, otherwise some scripts may not work -->
+        <!-- properly if they depend on elements in the document that have not loaded yet. -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <!-- html-css-sanitizer is a Google library that escapes potentially malicious HTML/CSS -->
+        <!-- with a JS function, html_sanitize. Use this on user input and dangerous attributes. -->
+        <script src="https://caja.appspot.com/html-css-sanitizer-minified.js"></script>
+        <script src="app/chat-app.form-handler.js"></script>
+        <script src="app/chat-app.account.js"></script>
+        <script src="app/chat-app.signin.js"></script>
+    </body>
+</html>
