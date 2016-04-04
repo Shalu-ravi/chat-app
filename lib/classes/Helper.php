@@ -32,7 +32,7 @@
             $host = '127.0.0.1'; // local instance of db, so use localhost ip
             $port = '3306'; // default port is 3306
             $db = 'chatapp'; // database name you want to connect to
-            $user = 'pancakesown'; // mysql username
+            $user = 'jmasukawa'; // mysql username [CHANGE THIS TO YOURS]
             $pass = ''; // No password by default on dev mysql instance
             
             // Define the data source name for connecting to the database.
